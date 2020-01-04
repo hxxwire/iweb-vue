@@ -11,6 +11,7 @@
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 
+
 import {router} from "./routes/router"
 export default {
   name: 'app',

@@ -6,6 +6,13 @@ import BootstrapVue from 'bootstrap-vue'
 import "bootstrap/dist/css/bootstrap.css"
 import "bootstrap-vue/dist/bootstrap-vue.css"
 Vue.use(BootstrapVue)
+
+//引入axios
+import{
+  axios_instance
+} from "./util/axios"
+
+Vue.prototype.axios=axios_instance
 Vue.config.productionTip = false
 
 new Vue({

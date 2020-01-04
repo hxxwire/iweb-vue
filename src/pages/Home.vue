@@ -1,16 +1,17 @@
 <template>
-    <b-container>
-      <h3>主页</h3>  
-      <b-button>Button</b-button>
-      <b-button variant="danger">Button</b-button>
-      <b-button variant="success">Button</b-button>
-      <b-button variant="outline-primary">Button</b-button>
+    <b-container class=' px-0'>
+        <Carousel></Carousel>
+        <HomeCourse></HomeCourse>
+     
     </b-container>
 </template>
 
 <script>
+import Carousel from "../components/Carousel"
+import HomeCourse from "../components/HomeCourse"
 export default {
-    name:'Home'
+    name:'Home',
+    components:{Carousel,HomeCourse}
 }
 </script>
 
