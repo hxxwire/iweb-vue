@@ -9,10 +9,10 @@
 
                 <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav>
-                    <b-nav-item href="#">全部课程</b-nav-item>
-                    <b-nav-item href="#">基础课程</b-nav-item>
-                    <b-nav-item href="#">核心课程</b-nav-item>
-                    <b-nav-item href="#">进阶课程</b-nav-item>
+                    <b-nav-item to="/course">全部课程</b-nav-item>
+                    <b-nav-item :to="{name:'course',query:{curPage:1,typeId:1}}">基础课程</b-nav-item>
+                    <b-nav-item :to="{name:'course',query:{curPage:1,typeId:2}}">核心课程</b-nav-item>
+                    <b-nav-item :to="{name:'course',query:{curPage:1,typeId:3}}">进阶课程</b-nav-item>
                     <b-nav-item to='/teacher'>名师堂</b-nav-item>
                     <b-nav-item :to="{name:'address'}">校区</b-nav-item>
                     <b-nav-item href="#" disabled>Disabled</b-nav-item>

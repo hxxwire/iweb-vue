@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :key="key">
          <Header></Header>
          <img alt="Vue logo" src="./assets/images/logo.png">
          <router-view></router-view>
@@ -19,6 +19,18 @@ export default {
   components: {
     Header,
     Footer
+  },
+  data(){
+    return {
+      key:"" //监听url 变化（解决路由不变，参数变但页面不刷新的问题
+    }
+  },
+  watch:{
+    $route:function(newUrl,oldUrl){
+      //路由（包括参数发生变化时 ，对key进行赋值）
+      //如果key 发生了变化则页面执行刷新
+      this.key=new Date().getTime()
+    }
   }
 }
 </script>

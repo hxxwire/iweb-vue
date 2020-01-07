@@ -2,6 +2,8 @@
 import Home from "../pages/Home"
 import Teacher from "../pages/Teacher"
 import Address from "../pages/Address"
+import Course from "../pages/Course"
+import CourseDetail from "../pages/CourseDetail"
 
 export const routes= [
     {
@@ -18,5 +20,15 @@ export const routes= [
         path:"/address",
         name:'address',
         component:Address
-    }
+    },
+    {
+        path:"/course",
+        name:'course',
+        component:Course
+    },
+    {
+        path:"/course_detail",
+        name:'course_detail',
+        component:CourseDetail
+    },
 ]

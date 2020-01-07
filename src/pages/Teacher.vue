@@ -1,5 +1,7 @@
 <template>
   <b-container>
+    <b-breadcrumb :items='items' class='bg-transparent'></b-breadcrumb>
+     
       <b-row class='my-5' v-for="(item,i) of info " :key="i">
           <b-col lg='2' md='3' sm='4'>
            
@@ -29,6 +31,16 @@ export default {
     data(){
       return {
         info:{},
+        items:[
+        {
+          text:'首页',
+          to:{name:"home"}
+        },
+        {
+          text:'名师堂',
+          active:true
+        }
+      ]
       }
     },
     methods:{
