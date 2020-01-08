@@ -13,6 +13,10 @@ import{
 } from "./util/axios"
 
 Vue.prototype.axios=axios_instance
+
+import global_config from "./util/global"
+Vue.prototype.$global=global_config
+
 Vue.config.productionTip = false
 
 new Vue({

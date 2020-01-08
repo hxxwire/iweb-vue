@@ -2,7 +2,7 @@
   <b-container>
        <h2 class="d-flex justify-content-between page-header">
            <span>最新课程</span>
-           <router-link to="">更多</router-link>
+           <router-link :to="{name:'course',query:{curPage:1,typeId:0}}">更多</router-link>
        </h2>
        <div>123</div>
      <b-row>

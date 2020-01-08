@@ -19,7 +19,6 @@ export default {
     methods:{
         getCourse(){
              this.axios.get('/type').then(res=>{
-            console.log(res)
             this.list=res.data.data
             this.list.unshift({tpid:0,tpname:"不限"})
         }).catch(err=>{

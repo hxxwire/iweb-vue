@@ -2,25 +2,36 @@
   <b-container>
       <b-row>
           <b-col cols='6'>
-              <img :src="require(`../assets/images/${data.pic}`)" alt="">
+              <img :src="data.pic" class="img-fluid" alt="">
           </b-col>
            <b-col cols='6'>
                <h3>{{data.title}}</h3>
+               <ul class='list-unstyled'>
+                   <li>讲师：{{data.tname}}</li>
+                   <li>课时：{{data.cLength}}</li>
+                   <li>开课时间：{{data.startTime}}</li>
+                   <li>上课地点：{{data.address}}</li>
+               </ul>
                <div>
-                   <p>讲师：{{data.tname}}</p>
-                   <p>课时{{data.clength}}</p>
-                   <p>{{data.startTime}}</p>
-                   <p>上课地点：{{data.address}}</p>
-               </div>
-               <div>
-                   <p>课程价格：{{data.price}}</p>
-                   <button> 加入购物车</button>加入收藏
+                   课程价格：<h2 class="text-danger d-inline-block">￥:{{data.price}}</h2>
+                    <p>
+                        <span id='addcart' class="btn btn-warning">
+                            <em>加入购物车</em>
+                        </span>
+                        <span class='span bg-gray'>加入收藏</span>
+                    </p> 
                </div>
           </b-col>
       </b-row>
-      <div v-html='data.details' style="text-indent:32px"> 
+      
+      <b-row>
+          <b-col cols='12'>
+              <span>课程详情</span>
+                <div class="details" v-html='data.details' style="text-indent:32px"> 
 
-      </div>
+                </div>
+          </b-col>
+      </b-row>
   </b-container>
 </template>
 
@@ -30,7 +41,7 @@ export default {
     data(){
         return {
             data:{},
-            cid:0
+            cid:this.$route.query.cid
 
         }
         
@@ -44,6 +55,7 @@ export default {
         }).then(res=>{
             console.log(res)
             this.data=res.data.data
+            this.data.pic=require(`../assets/images/${this.data.pic}`)
 
         }).catch(err=>{
             console.log(err)
@@ -51,7 +63,6 @@ export default {
         }
     },
     mounted(){
-        this.cid=this.$route.query.cid
         this.getDetail()
     }
 }
