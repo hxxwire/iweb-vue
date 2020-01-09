@@ -8,14 +8,14 @@ import "bootstrap-vue/dist/bootstrap-vue.css"
 Vue.use(BootstrapVue)
 
 //引入axios
-import{
-  axios_instance
-} from "./util/axios"
-
+import{axios_instance } from "./util/axios"
 Vue.prototype.axios=axios_instance
 
 import global_config from "./util/global"
 Vue.prototype.$global=global_config
+
+import qs from "qs"
+Vue.prototype.$qs=qs
 
 Vue.config.productionTip = false
 

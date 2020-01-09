@@ -147,7 +147,6 @@ import qs from 'qs'
               // alert('用户名已经存在')
               // uname.value=''
               uname.focus()
-
               return
             }else{
 

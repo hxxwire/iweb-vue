@@ -1,5 +1,6 @@
 <template>
   <div id="app" :key="key">
+         <TopNav></TopNav>
          <Header></Header>
          <img alt="Vue logo" src="./assets/images/logo.png">
          <router-view></router-view>
@@ -8,6 +9,7 @@
 </template>
 
 <script>
+import TopNav from './components/TopNav.vue'
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 
@@ -17,6 +19,7 @@ export default {
   name: 'app',
   router,
   components: {
+    TopNav,
     Header,
     Footer
   },
@@ -41,6 +44,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin-top: 6px;
+  /* margin-top: 6px; */
 }
 </style>

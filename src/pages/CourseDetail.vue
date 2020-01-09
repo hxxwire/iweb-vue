@@ -15,10 +15,10 @@
                <div>
                    课程价格：<h2 class="text-danger d-inline-block">￥:{{data.price}}</h2>
                     <p>
-                        <span id='addcart' class="btn btn-warning">
+                        <span id='addcart' @click="addCart" class="btn btn-warning">
                             <em>加入购物车</em>
                         </span>
-                        <span class='span bg-gray'>加入收藏</span>
+                        <span class='btn bg-gray' @click="addFavorite">加入收藏</span>
                     </p> 
                </div>
           </b-col>
@@ -60,7 +60,54 @@ export default {
         }).catch(err=>{
             console.log(err)
         })
-        }
+        },
+        //添加购物车
+        addCart(){
+            if(!this.$global.isLogin){
+                this.$router.push('/login')
+            }else{
+                let obj ={
+                    uid:sessionStorage.getItem('uid'),
+                    cid:this.$route.query.cid,
+                    count:1
+                }
+                console.log(obj)
+                this.axios.post('/cart/add',this.$qs.stringify(obj)).then(res=>{
+                    console.log(res)
+                    if(res.data.code==200){
+                        // alert('添加成功')
+                        location.reload()
+                    }
+                }).catch(err=>{
+                    console.log(err)
+                })
+            }
+        },
+        //添加收藏夹
+
+         addFavorite(){
+            if(!this.$global.isLogin){
+                this.$router.push('/login')
+            }else{
+                let obj ={
+                    uid:sessionStorage.getItem('uid'),
+                    cid:this.$route.query.cid,
+                   
+                }
+                console.log(obj)
+                this.axios.post('/favorite/add',this.$qs.stringify(obj)).then(res=>{
+                    console.log(res)
+                    if(res.data.code==200){
+                        alert('添加收藏夹成功')
+                    }else if(res.data.code==201){
+                        alert('课程已收藏')
+                    }
+                }).catch(err=>{
+                    console.log(err)
+                })
+            }
+        },
+
     },
     mounted(){
         this.getDetail()

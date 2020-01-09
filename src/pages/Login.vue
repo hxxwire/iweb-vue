@@ -21,7 +21,7 @@
 
                 >
                     <b-form-input
-                        id="uname"
+                        id="upwd"
                         v-model='form.upwd'
                         type='password'
                         
@@ -39,7 +39,6 @@
 </template>
 
 <script>
-import qs from "qs"
 export default {
     name:"Login",
     data(){
@@ -53,15 +52,17 @@ export default {
     },
     methods:{
         doLogin(){
-            this.axios.post('user/login',qs.stringify({uname:this.form.uname,upwd:this.form.upwd})).then(res=>{
+            this.axios.post('user/login',this.$qs.stringify({uname:this.form.uname,upwd:this.form.upwd})).then(res=>{
                 if(res.data.code==200)
-                console.log(res)
-                 sessionStorage.uid=res.data.data.uid
-                sessionStorage.uname=res.data.data.uname
+                console.log(res.data)
+                sessionStorage.uid=res.data.data[0].uid
+                sessionStorage.uname=res.data.data[0].uname
                 alert("登陆成功")
                 //跳转到首页
-                this.$router.push('/')
-                 location.reload()
+                // this.$router.push('/')
+                //   history.back()
+                history.go(-1)
+                //  location.reload()
 
                 //location.href='http://www.baidu.com'
             })
